@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DataRestClientService } from '../data-rest-client.service';
+import { InsertFormComponent } from "../insert-form/insert-form.component";
 
 @Component({
     selector: 'data-table',
@@ -15,7 +16,7 @@ export class DataTableComponent {
     error: any;
 
     loadData(): void {
-        this.restClient.getData("http://localhost:4200/api/tutorial/1.0/employees")
+        this.restClient.getData("http://localhost:8080/api/tutorial/1.0/employees")
         .subscribe(data => this.data = data, error => this.error = error);
     }
 }

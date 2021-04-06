@@ -9,14 +9,10 @@ export class DataRestClientService {
     constructor(private http: HttpClient) { }
     
     getData(apiUrl: string): Observable<Employee> {
-        return this.http.get<Employee>(apiUrl) 
-        .pipe(
-            retry(1),
-            //catchError(this.handleError) handleError is unknown
-        ) 
+        return this.http.get<Employee>(apiUrl).pipe(); 
     }
 
-    addEmployee() {
-        
+    postData(apiUrl: string, employee: Employee): void {
+        this.http.post(apiUrl, employee);
     }
 }
