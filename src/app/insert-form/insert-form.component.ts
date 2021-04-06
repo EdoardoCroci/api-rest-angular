@@ -29,7 +29,9 @@ export class InsertFormComponent {
       "phone": phone
     }
 
-    this.restClient.postData("http://localhost:8080/api/tutorial/1.0/employees", employee);
+    let data = JSON.stringify(employee);
+
+    this.restClient.postData("http://localhost:8080/api/tutorial/1.0/employees", data);
   }
 
 }
