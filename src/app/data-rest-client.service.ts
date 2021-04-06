@@ -22,7 +22,7 @@ export class DataRestClientService {
     }
 
     postData(apiUrl: string, employee: string): void {
-        this.http.put<Employee>(apiUrl, employee, this.httpOptions).pipe(
+        this.http.post<Employee>(apiUrl, employee, this.httpOptions).pipe(
             retry(1),
             catchError(this.handleError)
         );
