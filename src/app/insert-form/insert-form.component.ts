@@ -36,8 +36,6 @@ export class InsertFormComponent {
             }
 
             this.employee.employeeId = ++id;
-
-            console.log(this.employee);
         
             this.restClient.postData("http://localhost:4200/api/tutorial/1.0/employees", this.employee)
             .subscribe(data => this.result = data);

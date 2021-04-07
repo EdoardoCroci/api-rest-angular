@@ -14,22 +14,12 @@ export class DataRestClientService {
         })
     }
 
-    lastEmployee: any;
-
-    saveLastEmployee(employee: Employee) {
-        this.lastEmployee = employee;
-    }
-
-    getLastEmployee() {
-        return this.lastEmployee;
-    }
-
     getData(apiUrl: string): Observable<Employee> {
         return this.http.get<Employee>(apiUrl)
         .pipe(
             retry(1),
             //catchError(this.handleError)
-        )
+        );
     }
 
     postData(apiUrl: string, employee: Employee): Observable<Employee> {
@@ -37,7 +27,7 @@ export class DataRestClientService {
         .pipe(
             retry(1),
             //catchError(this.handleError)
-        )
+        );
     }
 
     deleteData(apiUrl: string) {
