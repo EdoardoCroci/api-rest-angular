@@ -14,16 +14,6 @@ export class DataRestClientService {
         })
     }
 
-    lastEmployee: any;
-
-    saveLastEmployee(employee: Employee) {
-        this.lastEmployee = employee;
-    }
-
-    getLastEmployee() {
-        return this.lastEmployee;
-    }
-
     getData(apiUrl: string): Observable<Employee> {
         return this.http.get<Employee>(apiUrl)
         .pipe(
