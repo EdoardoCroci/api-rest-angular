@@ -14,17 +14,29 @@ export class DataRestClientService {
         })
     }
 
-    getData(apiUrl: string): Observable<Employee> {
-        return this.http.get<Employee>(apiUrl).pipe(
-            retry(1),
-            catchError(this.handleError)
-        ); 
+    lastEmployee: any;
+
+    saveLastEmployee(employee: Employee) {
+        this.lastEmployee = employee;
     }
 
-    postData(apiUrl: string, employee: string): void {
-        this.http.post<Employee>(apiUrl, employee, this.httpOptions).pipe(
+    getLastEmployee() {
+        return this.lastEmployee;
+    }
+
+    getData(apiUrl: string): Observable<Employee> {
+        return this.http.get<Employee>(apiUrl)
+        .pipe(
             retry(1),
-            catchError(this.handleError)
-        );
+            //catchError(this.handleError)
+        )
+    }
+
+    postData(apiUrl: string, employee: Employee): Observable<Employee> {
+        return this.http.post<Employee>(apiUrl, JSON.stringify(employee), this.httpOptions)
+        .pipe(
+            retry(1),
+            //catchError(this.handleError)
+        )
     }
 }

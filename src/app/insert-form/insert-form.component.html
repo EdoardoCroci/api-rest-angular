@@ -1,8 +1,8 @@
 <button (click) = "showHideForm()">Show/Hide form for employee adding</button>
 <form id="form" *ngIf="visible">
-    <input placeholder="first name" type="text" required #firstName>
-    <input placeholder="last name" type="text" required #lastName>
-    <input placeholder="email" type="text" required #email>
-    <input placeholder="phone" type="text" required #phone>
-    <button (click) = "addEmployee(firstName.value, lastName.value, email.value, phone.value)">Add employee</button>
+    <input placeholder="first name" type="text" required [(ngModel)]="employee.firstName" [ngModelOptions]="{standalone: true}"> <br>
+    <input placeholder="last name" type="text" required [(ngModel)]="employee.lastName" [ngModelOptions]="{standalone: true}"> <br>
+    <input placeholder="email" type="email" required [(ngModel)]="employee.email" [ngModelOptions]="{standalone: true}"> <br>
+    <input placeholder="phone" type="text" required [(ngModel)]="employee.phone" [ngModelOptions]="{standalone: true}"> <br>
+    <button (click) = "addEmployee()">Add employee</button>
 </form>

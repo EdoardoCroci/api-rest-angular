@@ -10,9 +10,12 @@ import { Employee } from '../shared/employee';
 export class InsertFormComponent {
 
   visible : boolean = false;
+  employee: Employee;
+  result: any;
+  data: any;
 
   constructor(private restClient: DataRestClientService) {
-    
+    this.employee = {employeeId: 0, firstName: "", lastName: "", email: "", phone: ""};
   }
 
   showHideForm() : void {
@@ -20,18 +23,23 @@ export class InsertFormComponent {
     else this.visible = true;
   } 
 
-  addEmployee(firstName : string, lastName : string, email : string, phone : string) : void {
-    let employee: Employee = {
-      "employeeId": Math.floor(Math.random()*10),
-      "firstName": firstName,
-      "lastName": lastName,
-      "email": email,
-      "phone": phone
-    }
+  addEmployee() : void {
+    this.restClient.getData("http://localhost:4200/api/tutorial/1.0/employees").subscribe(
+        data => {
+            this.data = data;
 
-    let data = JSON.stringify(employee);
+            let id = this.data[this.data.length-1].employeeId;
 
-    this.restClient.postData("http://localhost:8080/api/tutorial/1.0/employees", data);
+            this.employee.employeeId = ++id;
+
+            console.log(this.employee);
+        
+            this.restClient.postData("http://localhost:4200/api/tutorial/1.0/employees", this.employee)
+            .subscribe(data => this.result = data);
+
+            location.reload(); //"mistake"
+        },
+        error => console.log(error)
+    );
   }
-
 }
