@@ -19,4 +19,10 @@ export class DataTableComponent {
         this.restClient.getData("http://localhost:4200/api/tutorial/1.0/employees")
         .subscribe(data => this.data = data, error => this.error = error);
     }
+
+    deleteEmployee(event: any): void {
+        let id = event.target.id;
+        this.restClient.deleteData('http://localhost:4200/api/tutorial/1.0/employees/' + id).subscribe();
+        this.loadData();
+    }
 }

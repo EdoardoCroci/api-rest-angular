@@ -39,4 +39,12 @@ export class DataRestClientService {
             //catchError(this.handleError)
         )
     }
+
+    deleteData(apiUrl: string) {
+        return this.http.delete(apiUrl)
+        .pipe(
+            retry(1),
+            //catchError(this.handleError)
+        )
+    }
 }

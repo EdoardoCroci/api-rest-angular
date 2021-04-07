@@ -28,7 +28,12 @@ export class InsertFormComponent {
         data => {
             this.data = data;
 
-            let id = this.data[this.data.length-1].employeeId;
+            try {
+              var id = this.data[this.data.length-1].employeeId;
+            }
+            catch {
+              var id: any = 0;
+            }
 
             this.employee.employeeId = ++id;
 

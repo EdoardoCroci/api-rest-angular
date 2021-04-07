@@ -1,8 +1,10 @@
 <table>
     <tr>
-        <th>
-            
-        </th>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Phone</th>
     </tr>
     <tr *ngFor="let item of data">
         <td>{{ item.employeeId }}</td>
@@ -10,5 +12,6 @@
         <td>{{ item.lastName }}</td>
         <td>{{ item.email }}</td>
         <td>{{ item.phone }}</td>
+        <td><button id='{{ item.employeeId }}' (click)='deleteEmployee($event)'>Remove</button></td> 
     </tr>
 </table>

@@ -1,0 +1,22 @@
+th {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-right: 10px;
+}
+
+td {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-right: 10px;
+}
+
+th, td {
+    border-left: 1px solid black;
+}
+
+button {
+    background-color: coral;
+    width: 60px;
+    height: 20px;
+    text-align: center;
+    border: none;
+    border: 1px solid black;
+}
