@@ -29,7 +29,7 @@ export class DataRestClientService {
         .pipe(
             retry(1),
             //catchError(this.handleError)
-        )
+        );
     }
 
     postData(apiUrl: string, employee: Employee): Observable<Employee> {
@@ -37,6 +37,6 @@ export class DataRestClientService {
         .pipe(
             retry(1),
             //catchError(this.handleError)
-        )
+        );
     }
 }
