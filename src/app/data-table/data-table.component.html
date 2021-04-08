@@ -13,5 +13,13 @@
         <td>{{ item.email }}</td>
         <td>{{ item.phone }}</td>
         <td><button id='{{ item.employeeId }}' (click)='deleteEmployee($event)'>Remove</button></td> 
+        <button id='{{ item.employeeId }}' (click) = "showHideForm($event)">Edit</button>
     </tr>
 </table>
+<form id="form" *ngIf="visible">
+    <input placeholder="first name" type="text" required [(ngModel)]="employee.firstName" [ngModelOptions]="{standalone: true}"> <br>
+    <input placeholder="last name" type="text" required [(ngModel)]="employee.lastName" [ngModelOptions]="{standalone: true}"> <br>
+    <input placeholder="email" type="email" required [(ngModel)]="employee.email" [ngModelOptions]="{standalone: true}"> <br>
+    <input placeholder="phone" type="text" required [(ngModel)]="employee.phone" [ngModelOptions]="{standalone: true}"> <br>
+    <button (click) = "updateEmployee()">Submit</button>
+</form>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataRestClientService } from '../data-rest-client.service';
 import { InsertFormComponent } from "../insert-form/insert-form.component";
+import { Employee } from '../shared/employee';
 
 @Component({
     selector: 'data-table',
@@ -10,10 +11,21 @@ import { InsertFormComponent } from "../insert-form/insert-form.component";
 export class DataTableComponent {
     constructor(private restClient: DataRestClientService) {
         this.loadData();
+        this.employee = {employeeId: 0, firstName: "", lastName: "", email: "", phone: ""};
     }
 
     data: any; 
     error: any;
+    visible: boolean = false;
+    employee: Employee;
+    id: any;
+
+    showHideForm(event: any) : void {
+        if(this.visible) this.visible = false;
+        else this.visible = true;
+        this.id = event.target.id;
+        this.employee.employeeId = this.id;
+    } 
 
     loadData(): void {
         this.restClient.getData("http://localhost:4200/api/tutorial/1.0/employees")
@@ -24,5 +36,11 @@ export class DataTableComponent {
         let id = event.target.id;
         this.restClient.deleteData('http://localhost:4200/api/tutorial/1.0/employees/' + id).subscribe();
         this.loadData();
+    }
+
+    updateEmployee(): void {
+        console.log("UpdateEmployee");
+        this.restClient.updateData('http://localhost:4200/api/tutorial/1.0/employees/' + this.id, this.employee).subscribe();
+        location.reload(); //"mistake"
     }
 }

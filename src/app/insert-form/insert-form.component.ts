@@ -11,8 +11,8 @@ export class InsertFormComponent {
 
   visible : boolean = false;
   employee: Employee;
-  result: any;
   data: any;
+  error: any;
 
   constructor(private restClient: DataRestClientService) {
     this.employee = {employeeId: 0, firstName: "", lastName: "", email: "", phone: ""};
@@ -38,7 +38,7 @@ export class InsertFormComponent {
             this.employee.employeeId = ++id;
         
             this.restClient.postData("http://localhost:4200/api/tutorial/1.0/employees", this.employee)
-            .subscribe(data => this.result = data);
+            .subscribe(data => this.data = data);
 
             location.reload(); //"mistake"
         },

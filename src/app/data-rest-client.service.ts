@@ -22,7 +22,7 @@ export class DataRestClientService {
         );
     }
 
-    postData(apiUrl: string, employee: Employee): Observable<Employee> {
+    postData(apiUrl: string, employee: Employee) {
         return this.http.post<Employee>(apiUrl, JSON.stringify(employee), this.httpOptions)
         .pipe(
             retry(1),
@@ -32,6 +32,14 @@ export class DataRestClientService {
 
     deleteData(apiUrl: string) {
         return this.http.delete(apiUrl)
+        .pipe(
+            retry(1),
+            //catchError(this.handleError)
+        )
+    }
+
+    updateData(apiUrl: string, employee: Employee) {
+        return this.http.put(apiUrl, JSON.stringify(employee), this.httpOptions)
         .pipe(
             retry(1),
             //catchError(this.handleError)
