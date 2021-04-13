@@ -12,8 +12,8 @@
         <td>{{ item.lastName }}</td>
         <td>{{ item.email }}</td>
         <td>{{ item.phone }}</td>
-        <td><button id='{{ item.employeeId }}' (click)='deleteEmployee($event)'>Remove</button></td> 
-        <button id='{{ item.employeeId }}' (click) = "showHideForm($event)">Edit</button>
+        <td><button id='{{ item.employeeId }}' (click) = 'deleteEmployee($event)'>Remove</button></td> 
+        <td><button id='{{ item.employeeId }}' (click) = 'showHideForm($event)'>Edit</button></td>
     </tr>
 </table>
 <form id="form" *ngIf="visible">

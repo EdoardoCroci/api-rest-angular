@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { DataRestClientService } from '../data-rest-client.service';
-import { InsertFormComponent } from "../insert-form/insert-form.component";
 import { Employee } from '../shared/employee';
 
 @Component({
@@ -39,7 +38,6 @@ export class DataTableComponent {
     }
 
     updateEmployee(): void {
-        console.log("UpdateEmployee");
         this.restClient.updateData('http://localhost:4200/api/tutorial/1.0/employees/' + this.id, this.employee).subscribe();
         location.reload(); //"mistake"
     }
